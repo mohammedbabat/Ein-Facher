@@ -504,15 +504,56 @@
     if (ta) ta.placeholder = lang === 'ar' ? 'اشرح باختصار ما تحتاجه...' : 'Beschreiben Sie kurz Ihr Anliegen...';
   }
 
+  // ── EmailJS Konfiguration ──────────────────────────────
+  // Tragen Sie hier Ihre 3 IDs von emailjs.com ein:
+  const EMAILJS_PUBLIC_KEY  = 'WXLm-gO2Zp2r_UI6U';
+  const EMAILJS_SERVICE_ID  = 'service_1maf1tj';
+  const EMAILJS_TEMPLATE_ID = 'template_2e21xzj';
+  // ──────────────────────────────────────────────────────
+
+  // EmailJS laden
+  (function(){
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    s.onload = function(){ emailjs.init(EMAILJS_PUBLIC_KEY); };
+    document.head.appendChild(s);
+  })();
+
   function submitForm() {
-    const fname = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const fname   = document.getElementById('fname').value.trim();
+    const lname   = document.getElementById('lname').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const topic   = document.getElementById('topic').value;
+    const message = document.getElementById('message').value.trim();
+
     if (!fname || !email) {
       alert(currentLang === 'ar' ? 'يرجى ملء الحقول المطلوبة.' : 'Bitte Name und E-Mail ausfüllen.');
       return;
     }
-    document.getElementById('successMsg').style.display = 'block';
-    document.querySelector('.form-submit .btn-primary').style.display = 'none';
+
+    const btn = document.querySelector('.form-submit .btn-primary');
+    btn.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Wird gesendet...';
+    btn.disabled = true;
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name:  fname + ' ' + lname,
+      from_email: email,
+      phone:      phone || '—',
+      topic:      topic || '—',
+      message:    message || '—',
+    })
+    .then(function() {
+      document.getElementById('successMsg').style.display = 'block';
+      btn.style.display = 'none';
+    })
+    .catch(function(error) {
+      alert(currentLang === 'ar'
+        ? 'حدث خطأ، يرجى المحاولة مرة أخرى.'
+        : 'Fehler beim Senden. Bitte versuchen Sie es erneut.\n' + JSON.stringify(error));
+      btn.textContent = currentLang === 'ar' ? 'إرسال الرسالة ←' : 'Nachricht senden →';
+      btn.disabled = false;
+    });
   }
 
   const obs = new IntersectionObserver((entries) => {
