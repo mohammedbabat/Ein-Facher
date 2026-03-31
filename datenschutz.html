@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Datenschutz – Ein-Facher Cloud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .datenschutz-hero {
+      padding: calc(var(--nav-h) + 60px) 24px 50px;
+      text-align: center;
+      background: linear-gradient(160deg, #F8F5FF 0%, #FFF0E6 60%, #EDE0FF 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .blob { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(40px); }
+    .blob1 { width: 400px; height: 400px; background: rgba(168,85,247,0.1); top: -80px; left: -80px; animation: blobFloat1 8s ease-in-out infinite; }
+    .blob2 { width: 300px; height: 300px; background: rgba(249,115,22,0.08); bottom: -60px; right: -60px; animation: blobFloat2 10s ease-in-out infinite; }
+    @keyframes blobFloat1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px,15px); } }
+    @keyframes blobFloat2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-15px,-20px); } }
+
+    .datenschutz-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800;
+      color: var(--text); position: relative; z-index: 1;
+      opacity: 0; animation: heroItem 0.8s 0.3s var(--ease) forwards;
+    }
+    .datenschutz-hero p {
+      color: var(--text-mid); margin-top: 12px; font-size: 1rem;
+      position: relative; z-index: 1;
+      opacity: 0; animation: heroItem 0.8s 0.5s var(--ease) forwards;
+    }
+    @keyframes heroItem { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+
+    .datenschutz-content {
+      max-width: 800px; margin: 0 auto; padding: 60px 24px 80px;
+    }
+    .ds-section {
+      background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 32px; margin-bottom: 20px;
+      transition: box-shadow 0.3s;
+    }
+    .ds-section:hover { box-shadow: 0 8px 24px var(--shadow); }
+    .ds-section h2 {
+      font-size: 1.1rem; font-weight: 700; color: var(--text);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .ds-section h2 .icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--purple-soft); display: flex; align-items: center;
+      justify-content: center; font-size: 1rem; flex-shrink: 0;
+    }
+    .ds-section p { color: var(--text-mid); font-size: 0.92rem; line-height: 1.75; margin-bottom: 10px; }
+    .ds-section p:last-child { margin-bottom: 0; }
+    .ds-section a { color: var(--purple); text-decoration: underline; }
+    .ds-section ul { margin: 10px 0 10px 20px; color: var(--text-mid); font-size: 0.92rem; line-height: 1.75; }
+    .ds-tag {
+      display: inline-block; padding: 2px 8px;
+      background: var(--orange-soft); border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 6px; font-size: 0.7rem; color: var(--orange);
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .ds-tag.purple {
+      background: var(--purple-soft); border-color: rgba(123,47,190,0.2);
+      color: var(--purple);
+    }
+    .last-updated {
+      text-align: center; color: var(--text-muted); font-size: 0.82rem;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box"><svg viewBox="0 0 28 28" fill="none"><text x="1" y="20" font-family="Outfit,sans-serif" font-weight="800" font-size="15" fill="white">EF</text><circle cx="23" cy="7" r="2.2" fill="#FB923C"/><circle cx="23" cy="21" r="2.2" fill="#FB923C"/><line x1="21" y1="7" x2="17" y2="7" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/><line x1="21" y1="21" x2="17" y2="21" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <div class="logo-text-wrap"><span class="logo-name">Ein-Facher</span><span class="logo-sub">— Cloud —</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="cloud-support.html">Cloud Support</a></li>
+    <li><a href="#" class="soon">Local Support</a></li>
+    <li><a href="termin.html">Termin buchen</a></li>
+    <li><a href="#" class="soon">Team</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <a href="index.html#contact" class="cta-nav">Kontakt</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="cloud-support.html" onclick="closeMenu()">Cloud Support</a>
+  <a href="#" class="soon">Local Support</a>
+  <a href="termin.html" onclick="closeMenu()">Termin buchen</a>
+  <a href="#" class="soon">Team</a>
+  <a href="index.html#contact" onclick="closeMenu()" style="color:var(--orange);font-weight:600;">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<div class="datenschutz-hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <h1>🔒 Datenschutzerklärung</h1>
+  <p>Transparenz über den Umgang mit Ihren Daten</p>
+</div>
+
+<!-- CONTENT -->
+<div class="datenschutz-content">
+  <p class="last-updated">Zuletzt aktualisiert: April 2026</p>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">👤</span> Verantwortlicher</h2>
+    <p>Verantwortlich für die Datenverarbeitung auf dieser Webseite:</p>
+    <p><strong>Ein-Facher Cloud</strong><br/>
+    E-Mail: <a href="mailto:info@ein-facher.de">info@ein-facher.de</a><br/>
+    Webseite: <a href="https://ein-facher.cloud">ein-facher.cloud</a></p>
+  </div>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">🌐</span> Google Fonts</h2>
+    <div class="ds-tag">Externe Dienste</div>
+    <p>Diese Webseite verwendet Google Fonts zur Darstellung von Schriftarten. Dabei wird beim Laden der Seite eine Verbindung zu Google-Servern hergestellt und Ihre IP-Adresse übertragen.</p>
+    <p>Anbieter: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA</p>
+    <p>Datenschutz: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+  </div>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">📧</span> EmailJS (Kontaktformular)</h2>
+    <div class="ds-tag">Kontaktformular</div>
+    <p>Das Kontaktformular auf dieser Webseite verwendet EmailJS. Wenn Sie das Formular absenden, werden folgende Daten verarbeitet:</p>
+    <ul>
+      <li>Vor- und Nachname</li>
+      <li>E-Mail-Adresse</li>
+      <li>Telefonnummer (optional)</li>
+      <li>Ihre Nachricht</li>
+    </ul>
+    <p>Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben.</p>
+    <p>Anbieter: EmailJS, <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank">Datenschutz von EmailJS</a></p>
+  </div>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">📅</span> Calendly (Terminbuchung)</h2>
+    <div class="ds-tag">Terminbuchung</div>
+    <p>Für die Terminbuchung verwenden wir Calendly. Wenn Sie einen Termin buchen, werden Ihre Daten (Name, E-Mail, gewählter Termin) an Calendly übertragen.</p>
+    <p>Anbieter: Calendly LLC, 271 17th St NW, Atlanta, GA 30363, USA</p>
+    <p>Datenschutz: <a href="https://calendly.com/privacy" target="_blank">calendly.com/privacy</a></p>
+  </div>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">🍪</span> Cookies</h2>
+    <div class="ds-tag purple">Cookies</div>
+    <p>Diese Webseite selbst setzt keine eigenen Cookies. Die eingebundenen externen Dienste (Google Fonts, EmailJS, Calendly) können jedoch eigene Cookies setzen.</p>
+    <p>Sie können Cookies in Ihrem Browser jederzeit löschen oder deaktivieren.</p>
+  </div>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">⚖️</span> Ihre Rechte (DSGVO)</h2>
+    <div class="ds-tag purple">DSGVO</div>
+    <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+    <ul>
+      <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+      <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+      <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+      <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+      <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+      <li>Widerspruchsrecht (Art. 21 DSGVO)</li>
+    </ul>
+    <p>Zur Ausübung Ihrer Rechte kontaktieren Sie uns unter: <a href="mailto:info@ein-facher.de">info@ein-facher.de</a></p>
+  </div>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">📞</span> Beschwerderecht</h2>
+    <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Die zuständige Behörde in NRW ist:</p>
+    <p><strong>Landesbeauftragte für Datenschutz und Informationsfreiheit NRW</strong><br/>
+    <a href="https://www.ldi.nrw.de" target="_blank">www.ldi.nrw.de</a></p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo-box"><svg viewBox="0 0 28 28" fill="none"><text x="1" y="20" font-family="Outfit,sans-serif" font-weight="800" font-size="15" fill="white">EF</text><circle cx="23" cy="7" r="2" fill="#FB923C"/><circle cx="23" cy="21" r="2" fill="#FB923C"/><line x1="21" y1="7" x2="17" y2="7" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/><line x1="21" y1="21" x2="17" y2="21" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <span class="footer-name">Ein-Facher <span>Cloud</span></span>
+  </div>
+  <p id="footerCopy"></p>
+  <p style="margin-top:8px;"><a href="datenschutz.html" style="color:rgba(255,255,255,0.4);font-size:0.78rem;text-decoration:underline;">Datenschutz</a></p>
+</footer>
+
+<script>
+  document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' Ein-Facher Cloud · Alle Rechte vorbehalten';
+  window.addEventListener('scroll', () => { document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40); });
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburger').classList.remove('open'); }
+  let currentLang = 'de';
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('ar', lang === 'ar');
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.textContent.toLowerCase() === lang));
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
