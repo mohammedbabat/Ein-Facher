@@ -221,19 +221,23 @@
     <li><a href="#" class="soon">Team</a></li>
   </ul>
   <div class="nav-right">
-    <a href="termin.html" class="cta-nav">Termin buchen</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <a href="termin.html" class="cta-nav" data-de="Termin buchen" data-ar="حجز موعد">Termin buchen</a>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMenu()">Home</a>
-  <a href="cloud-support.html" class="active" onclick="closeMenu()">Cloud Support</a>
-  <a href="#" class="soon">Local Support</a>
-  <a href="termin.html" onclick="closeMenu()">Termin buchen</a>
-  <a href="#" class="soon">Team</a>
-  <a href="termin.html" onclick="closeMenu()" style="color:var(--orange);font-weight:600;">Termin buchen →</a>
+  <a href="index.html" onclick="closeMenu()" data-de="Home" data-ar="الرئيسية">Home</a>
+  <a href="cloud-support.html" class="active" onclick="closeMenu()" data-de="Cloud Support" data-ar="دعم السحابة">Cloud Support</a>
+  <a href="#" class="soon" data-de="Local Support" data-ar="الدعم المحلي">Local Support</a>
+  <a href="termin.html" onclick="closeMenu()" data-de="Termin buchen" data-ar="حجز موعد">Termin buchen</a>
+  <a href="#" class="soon" data-de="Team" data-ar="الفريق">Team</a>
+  <a href="termin.html" onclick="closeMenu()" style="color:var(--orange);font-weight:600;" data-de="Termin buchen →" data-ar="حجز موعد ←">Termin buchen →</a>
 </div>
 
 <!-- PAGE HERO -->
@@ -241,9 +245,9 @@
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="page-hero-content">
-    <div class="page-badge">☁️ Microsoft Cloud Services</div>
-    <h1>Cloud Support für<br/><span class="grad">kleine Unternehmen</span></h1>
-    <p>Wir helfen kleinen Unternehmen dabei, Microsoft Cloud-Dienste einfach, sicher und effektiv zu nutzen – ohne IT-Abteilung, ohne Stress.</p>
+    <div class="page-badge" data-de="☁️ Microsoft Cloud Services" data-ar="☁️ خدمات مايكروسوفت السحابية">☁️ Microsoft Cloud Services</div>
+    <h1><span data-de="Cloud Support für" data-ar="دعم سحابي لـ">Cloud Support für</span><br/><span class="grad" data-de="kleine Unternehmen" data-ar="الشركات الصغيرة">kleine Unternehmen</span></h1>
+    <p data-de="Wir helfen kleinen Unternehmen dabei, Microsoft Cloud-Dienste einfach, sicher und effektiv zu nutzen – ohne IT-Abteilung, ohne Stress." data-ar="نساعد الشركات الصغيرة على استخدام خدمات مايكروسوفت السحابية بسهولة وأمان وفعالية – بدون قسم تقنية معلومات، بدون تعقيد.">Wir helfen kleinen Unternehmen dabei, Microsoft Cloud-Dienste einfach, sicher und effektiv zu nutzen – ohne IT-Abteilung, ohne Stress.</p>
   </div>
 </div>
 
@@ -265,47 +269,47 @@
 
   <!-- WIE WIR HELFEN -->
   <div class="how-section">
-    <p class="section-label reveal">Wie es funktioniert</p>
-    <h2 class="section-title reveal">So helfen wir Ihrem Unternehmen</h2>
-    <p class="section-sub reveal">Kein kompliziertes IT-Wissen nötig. Wir übernehmen die technische Seite – Sie konzentrieren sich auf Ihr Geschäft.</p>
+    <p class="section-label reveal" data-de="Wie es funktioniert" data-ar="كيف يعمل">Wie es funktioniert</p>
+    <h2 class="section-title reveal" data-de="So helfen wir Ihrem Unternehmen" data-ar="كيف نساعد شركتك">So helfen wir Ihrem Unternehmen</h2>
+    <p class="section-sub reveal" data-de="Kein kompliziertes IT-Wissen nötig. Wir übernehmen die technische Seite – Sie konzentrieren sich auf Ihr Geschäft." data-ar="لا حاجة لمعرفة تقنية معقدة. نحن نتولى الجانب التقني – وأنت تركز على عملك.">Kein kompliziertes IT-Wissen nötig. Wir übernehmen die technische Seite – Sie konzentrieren sich auf Ihr Geschäft.</p>
 
     <div class="how-grid">
       <div class="how-card reveal">
         <div class="how-num">1</div>
-        <h3>Analyse & Beratung</h3>
-        <p>Wir schauen uns Ihre aktuelle Situation an – welche Microsoft-Dienste Sie bereits nutzen, was fehlt und wo wir sofort helfen können.</p>
+        <h3 data-de="Analyse & Beratung" data-ar="التحليل والاستشارة">Analyse & Beratung</h3>
+        <p data-de="Wir schauen uns Ihre aktuelle Situation an – welche Microsoft-Dienste Sie bereits nutzen, was fehlt und wo wir sofort helfen können." data-ar="نستعرض وضعك الحالي – أي خدمات مايكروسوفت تستخدمها، وما الذي ينقصك، وأين يمكننا المساعدة فوراً.">Wir schauen uns Ihre aktuelle Situation an – welche Microsoft-Dienste Sie bereits nutzen, was fehlt und wo wir sofort helfen können.</p>
       </div>
       <div class="how-card reveal">
         <div class="how-num">2</div>
-        <h3>Einrichtung & Konfiguration</h3>
-        <p>Wir richten die Microsoft Cloud-Dienste für Sie ein – sicher konfiguriert, auf Ihr Unternehmen zugeschnitten, sofort einsatzbereit.</p>
+        <h3 data-de="Einrichtung & Konfiguration" data-ar="الإعداد والتهيئة">Einrichtung & Konfiguration</h3>
+        <p data-de="Wir richten die Microsoft Cloud-Dienste für Sie ein – sicher konfiguriert, auf Ihr Unternehmen zugeschnitten, sofort einsatzbereit." data-ar="نقوم بإعداد خدمات مايكروسوفت السحابية – مهيأة بأمان، ومخصصة لشركتك، وجاهزة للاستخدام فوراً.">Wir richten die Microsoft Cloud-Dienste für Sie ein – sicher konfiguriert, auf Ihr Unternehmen zugeschnitten, sofort einsatzbereit.</p>
       </div>
       <div class="how-card reveal">
         <div class="how-num">3</div>
-        <h3>Laufender Support</h3>
-        <p>Auch nach der Einrichtung sind wir da. Bei Problemen, Fragen oder Änderungen – wir helfen schnell und persönlich.</p>
+        <h3 data-de="Laufender Support" data-ar="الدعم المستمر">Laufender Support</h3>
+        <p data-de="Auch nach der Einrichtung sind wir da. Bei Problemen, Fragen oder Änderungen – wir helfen schnell und persönlich." data-ar="نحن هنا حتى بعد الإعداد. عند المشاكل أو الأسئلة أو التغييرات – نساعدك بسرعة وبشكل شخصي.">Auch nach der Einrichtung sind wir da. Bei Problemen, Fragen oder Änderungen – wir helfen schnell und persönlich.</p>
       </div>
     </div>
   </div>
 
   <!-- SERVICE DETAILS -->
   <div class="services-detail">
-    <p class="section-label reveal">Unsere Leistungen</p>
-    <h2 class="section-title reveal">Was wir konkret für Sie tun</h2>
-    <p class="section-sub reveal">Jeder dieser Dienste kann einzeln oder als Paket betreut werden – ganz nach Ihrem Bedarf.</p>
+    <p class="section-label reveal" data-de="Unsere Leistungen" data-ar="خدماتنا">Unsere Leistungen</p>
+    <h2 class="section-title reveal" data-de="Was wir konkret für Sie tun" data-ar="ما نقدمه لك بالتحديد">Was wir konkret für Sie tun</h2>
+    <p class="section-sub reveal" data-de="Jeder dieser Dienste kann einzeln oder als Paket betreut werden – ganz nach Ihrem Bedarf." data-ar="يمكن الاعتناء بكل خدمة من هذه الخدمات بشكل منفرد أو كحزمة – حسب احتياجك.">Jeder dieser Dienste kann einzeln oder als Paket betreut werden – ganz nach Ihrem Bedarf.</p>
 
     <!-- Entra ID -->
     <div class="service-detail-card reveal">
       <div class="sd-icon-wrap">🔐</div>
       <div class="sd-text">
-        <div class="sd-tag purple">Identität & Zugriff</div>
+        <div class="sd-tag purple" data-de="Identität & Zugriff" data-ar="الهوية والوصول">Identität & Zugriff</div>
         <h3>Microsoft Entra ID</h3>
-        <p>Entra ID ist das Herzstück Ihrer Microsoft-Umgebung. Es verwaltet, wer Zugriff auf was hat – sicher und zentral. Für kleine Unternehmen bedeutet das: kein Passwort-Chaos, kein unbefugter Zugriff.</p>
+        <p data-de="Entra ID ist das Herzstück Ihrer Microsoft-Umgebung. Es verwaltet, wer Zugriff auf was hat – sicher und zentral. Für kleine Unternehmen bedeutet das: kein Passwort-Chaos, kein unbefugter Zugriff." data-ar="Entra ID هو قلب بيئة مايكروسوفت لديك. يتحكم في من يصل إلى ماذا – بشكل آمن ومركزي. للشركات الصغيرة هذا يعني: لا فوضى كلمات المرور، لا وصول غير مصرح به.">Entra ID ist das Herzstück Ihrer Microsoft-Umgebung. Es verwaltet, wer Zugriff auf was hat – sicher und zentral. Für kleine Unternehmen bedeutet das: kein Passwort-Chaos, kein unbefugter Zugriff.</p>
         <div class="sd-features">
-          <div class="sd-feature"><span class="check">✦</span>Benutzer und Gruppen anlegen & verwalten</div>
-          <div class="sd-feature"><span class="check">✦</span>Multi-Faktor-Authentifizierung (MFA) einrichten</div>
-          <div class="sd-feature"><span class="check">✦</span>Single Sign-On – einmal anmelden, überall Zugriff</div>
-          <div class="sd-feature"><span class="check">✦</span>Sicherheitsrichtlinien für Ihr Unternehmen</div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Benutzer und Gruppen anlegen & verwalten" data-ar="إنشاء المستخدمين والمجموعات وإدارتها">Benutzer und Gruppen anlegen & verwalten</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Multi-Faktor-Authentifizierung (MFA) einrichten" data-ar="إعداد المصادقة متعددة العوامل (MFA)">Multi-Faktor-Authentifizierung (MFA) einrichten</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Single Sign-On – einmal anmelden, überall Zugriff" data-ar="تسجيل دخول موحد – سجّل مرة واحدة، وصول في كل مكان">Single Sign-On – einmal anmelden, überall Zugriff</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Sicherheitsrichtlinien für Ihr Unternehmen" data-ar="سياسات الأمان لشركتك">Sicherheitsrichtlinien für Ihr Unternehmen</span></div>
         </div>
       </div>
     </div>
@@ -314,14 +318,14 @@
     <div class="service-detail-card reverse reveal">
       <div class="sd-icon-wrap">📁</div>
       <div class="sd-text">
-        <div class="sd-tag">Zusammenarbeit</div>
+        <div class="sd-tag" data-de="Zusammenarbeit" data-ar="التعاون">Zusammenarbeit</div>
         <h3>SharePoint</h3>
-        <p>SharePoint ersetzt unübersichtliche E-Mail-Anhänge und lokale Laufwerke. Dokumente zentral speichern, gemeinsam bearbeiten und jederzeit und überall drauf zugreifen – auch vom Handy.</p>
+        <p data-de="SharePoint ersetzt unübersichtliche E-Mail-Anhänge und lokale Laufwerke. Dokumente zentral speichern, gemeinsam bearbeiten und jederzeit und überall drauf zugreifen – auch vom Handy." data-ar="يحل SharePoint محل مرفقات البريد الإلكتروني الفوضوية والمحركات المحلية. تخزين المستندات مركزياً، التحرير المشترك، والوصول في أي وقت ومن أي مكان – حتى من الهاتف.">SharePoint ersetzt unübersichtliche E-Mail-Anhänge und lokale Laufwerke. Dokumente zentral speichern, gemeinsam bearbeiten und jederzeit und überall drauf zugreifen – auch vom Handy.</p>
         <div class="sd-features">
-          <div class="sd-feature"><span class="check">✦</span>Dokumentenbibliothek einrichten & strukturieren</div>
-          <div class="sd-feature"><span class="check">✦</span>Berechtigungen – wer sieht was</div>
-          <div class="sd-feature"><span class="check">✦</span>Intranet-Seite für Ihr Team erstellen</div>
-          <div class="sd-feature"><span class="check">✦</span>Integration mit Teams und Outlook</div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Dokumentenbibliothek einrichten & strukturieren" data-ar="إعداد مكتبة المستندات وتنظيمها">Dokumentenbibliothek einrichten & strukturieren</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Berechtigungen – wer sieht was" data-ar="الأذونات – من يرى ماذا">Berechtigungen – wer sieht was</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Intranet-Seite für Ihr Team erstellen" data-ar="إنشاء صفحة إنترانت لفريقك">Intranet-Seite für Ihr Team erstellen</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Integration mit Teams und Outlook" data-ar="التكامل مع Teams وOutlook">Integration mit Teams und Outlook</span></div>
         </div>
       </div>
     </div>
@@ -330,14 +334,14 @@
     <div class="service-detail-card reveal">
       <div class="sd-icon-wrap">📱</div>
       <div class="sd-text">
-        <div class="sd-tag purple">Geräteverwaltung</div>
+        <div class="sd-tag purple" data-de="Geräteverwaltung" data-ar="إدارة الأجهزة">Geräteverwaltung</div>
         <h3>Microsoft Intune</h3>
-        <p>Mit Intune behalten Sie die Kontrolle über alle Firmengeräte – egal ob Laptop, Tablet oder Smartphone. Wenn ein Gerät verloren geht, können wir es aus der Ferne sperren oder löschen.</p>
+        <p data-de="Mit Intune behalten Sie die Kontrolle über alle Firmengeräte – egal ob Laptop, Tablet oder Smartphone. Wenn ein Gerät verloren geht, können wir es aus der Ferne sperren oder löschen." data-ar="مع Intune تحتفظ بالتحكم في جميع أجهزة الشركة – سواء كانت لاب توب أو تابلت أو هاتف ذكي. إذا فُقد جهاز، يمكننا قفله أو مسحه عن بُعد.">Mit Intune behalten Sie die Kontrolle über alle Firmengeräte – egal ob Laptop, Tablet oder Smartphone. Wenn ein Gerät verloren geht, können wir es aus der Ferne sperren oder löschen.</p>
         <div class="sd-features">
-          <div class="sd-feature"><span class="check">✦</span>Alle Firmengeräte zentral verwalten</div>
-          <div class="sd-feature"><span class="check">✦</span>Apps automatisch auf Geräte verteilen</div>
-          <div class="sd-feature"><span class="check">✦</span>Geräteverschlüsselung aktivieren</div>
-          <div class="sd-feature"><span class="check">✦</span>Fernlöschung bei Verlust oder Diebstahl</div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Alle Firmengeräte zentral verwalten" data-ar="إدارة جميع أجهزة الشركة مركزياً">Alle Firmengeräte zentral verwalten</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Apps automatisch auf Geräte verteilen" data-ar="توزيع التطبيقات تلقائياً على الأجهزة">Apps automatisch auf Geräte verteilen</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Geräteverschlüsselung aktivieren" data-ar="تفعيل تشفير الأجهزة">Geräteverschlüsselung aktivieren</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Fernlöschung bei Verlust oder Diebstahl" data-ar="المسح عن بُعد عند الفقدان أو السرقة">Fernlöschung bei Verlust oder Diebstahl</span></div>
         </div>
       </div>
     </div>
@@ -346,14 +350,14 @@
     <div class="service-detail-card reverse reveal">
       <div class="sd-icon-wrap">⚡</div>
       <div class="sd-text">
-        <div class="sd-tag">Automatisierung</div>
+        <div class="sd-tag" data-de="Automatisierung" data-ar="الأتمتة">Automatisierung</div>
         <h3>Power Apps & Power Automate</h3>
-        <p>Viele kleine Unternehmen verschwenden täglich Zeit mit manuellen, sich wiederholenden Aufgaben. Mit Power Apps und Power Automate automatisieren wir diese Prozesse – ohne Programmierung.</p>
+        <p data-de="Viele kleine Unternehmen verschwenden täglich Zeit mit manuellen, sich wiederholenden Aufgaben. Mit Power Apps und Power Automate automatisieren wir diese Prozesse – ohne Programmierung." data-ar="كثير من الشركات الصغيرة تضيع وقتاً يومياً في مهام يدوية متكررة. مع Power Apps وPower Automate نؤتمت هذه العمليات – بدون برمجة.">Viele kleine Unternehmen verschwenden täglich Zeit mit manuellen, sich wiederholenden Aufgaben. Mit Power Apps und Power Automate automatisieren wir diese Prozesse – ohne Programmierung.</p>
         <div class="sd-features">
-          <div class="sd-feature"><span class="check">✦</span>Einfache Apps für interne Prozesse bauen</div>
-          <div class="sd-feature"><span class="check">✦</span>Automatische E-Mail-Benachrichtigungen</div>
-          <div class="sd-feature"><span class="check">✦</span>Genehmigungsprozesse automatisieren</div>
-          <div class="sd-feature"><span class="check">✦</span>Formulare und Datenerfassung digitalisieren</div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Einfache Apps für interne Prozesse bauen" data-ar="بناء تطبيقات بسيطة للعمليات الداخلية">Einfache Apps für interne Prozesse bauen</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Automatische E-Mail-Benachrichtigungen" data-ar="إشعارات البريد الإلكتروني التلقائية">Automatische E-Mail-Benachrichtigungen</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Genehmigungsprozesse automatisieren" data-ar="أتمتة عمليات الموافقة">Genehmigungsprozesse automatisieren</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Formulare und Datenerfassung digitalisieren" data-ar="رقمنة النماذج وجمع البيانات">Formulare und Datenerfassung digitalisieren</span></div>
         </div>
       </div>
     </div>
@@ -362,14 +366,14 @@
     <div class="service-detail-card reveal">
       <div class="sd-icon-wrap">📧</div>
       <div class="sd-text">
-        <div class="sd-tag purple">E-Mail & Kommunikation</div>
+        <div class="sd-tag purple" data-de="E-Mail & Kommunikation" data-ar="البريد الإلكتروني والتواصل">E-Mail & Kommunikation</div>
         <h3>Exchange Online</h3>
-        <p>Exchange Online ist die professionelle E-Mail-Lösung von Microsoft. Ihre eigene Firmen-E-Mail-Adresse, Kalender und Kontakte – sicher in der Cloud, auf allen Geräten verfügbar.</p>
+        <p data-de="Exchange Online ist die professionelle E-Mail-Lösung von Microsoft. Ihre eigene Firmen-E-Mail-Adresse, Kalender und Kontakte – sicher in der Cloud, auf allen Geräten verfügbar." data-ar="Exchange Online هو حل البريد الإلكتروني الاحترافي من مايكروسوفت. بريد إلكتروني خاص بشركتك، تقويم وجهات اتصال – آمن في السحابة، متاح على جميع الأجهزة.">Exchange Online ist die professionelle E-Mail-Lösung von Microsoft. Ihre eigene Firmen-E-Mail-Adresse, Kalender und Kontakte – sicher in der Cloud, auf allen Geräten verfügbar.</p>
         <div class="sd-features">
-          <div class="sd-feature"><span class="check">✦</span>Professionelle Firmen-E-Mail einrichten</div>
-          <div class="sd-feature"><span class="check">✦</span>Freigegebene Kalender für das Team</div>
-          <div class="sd-feature"><span class="check">✦</span>Spam- und Virenschutz konfigurieren</div>
-          <div class="sd-feature"><span class="check">✦</span>E-Mail-Migration von altem Anbieter</div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Professionelle Firmen-E-Mail einrichten" data-ar="إعداد بريد إلكتروني احترافي للشركة">Professionelle Firmen-E-Mail einrichten</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Freigegebene Kalender für das Team" data-ar="تقاويم مشتركة للفريق">Freigegebene Kalender für das Team</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Spam- und Virenschutz konfigurieren" data-ar="تهيئة الحماية من البريد العشوائي والفيروسات">Spam- und Virenschutz konfigurieren</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="E-Mail-Migration von altem Anbieter" data-ar="ترحيل البريد الإلكتروني من المزود القديم">E-Mail-Migration von altem Anbieter</span></div>
         </div>
       </div>
     </div>
@@ -377,35 +381,35 @@
 
   <!-- FÜR WEN -->
   <div class="who-section reveal">
-    <p class="section-label">Für wen ist das?</p>
-    <h2 class="section-title">Perfekt für kleine Unternehmen</h2>
-    <p class="section-sub">Sie brauchen keine eigene IT-Abteilung. Wir sind Ihr persönlicher IT-Partner.</p>
+    <p class="section-label" data-de="Für wen ist das?" data-ar="لمن هذا؟">Für wen ist das?</p>
+    <h2 class="section-title" data-de="Perfekt für kleine Unternehmen" data-ar="مثالي للشركات الصغيرة">Perfekt für kleine Unternehmen</h2>
+    <p class="section-sub" data-de="Sie brauchen keine eigene IT-Abteilung. Wir sind Ihr persönlicher IT-Partner." data-ar="لا تحتاج إلى قسم تقنية معلومات خاص. نحن شريكك التقني الشخصي.">Sie brauchen keine eigene IT-Abteilung. Wir sind Ihr persönlicher IT-Partner.</p>
     <div class="who-grid">
       <div class="who-card">
         <div class="who-icon">🏪</div>
-        <h4>Kleine Betriebe & Shops</h4>
-        <p>1–20 Mitarbeiter, die professionell zusammenarbeiten wollen ohne viel Aufwand.</p>
+        <h4 data-de="Kleine Betriebe & Shops" data-ar="المنشآت الصغيرة والمحلات">Kleine Betriebe & Shops</h4>
+        <p data-de="1–20 Mitarbeiter, die professionell zusammenarbeiten wollen ohne viel Aufwand." data-ar="١ إلى ٢٠ موظف يريدون التعاون باحترافية دون تعقيد.">1–20 Mitarbeiter, die professionell zusammenarbeiten wollen ohne viel Aufwand.</p>
       </div>
       <div class="who-card">
         <div class="who-icon">🏢</div>
-        <h4>Büros & Dienstleister</h4>
-        <p>Anwaltskanzleien, Steuerberater, Arztpraxen – die sichere Cloud-Lösungen brauchen.</p>
+        <h4 data-de="Büros & Dienstleister" data-ar="المكاتب ومقدمو الخدمات">Büros & Dienstleister</h4>
+        <p data-de="Anwaltskanzleien, Steuerberater, Arztpraxen – die sichere Cloud-Lösungen brauchen." data-ar="مكاتب المحامين، المستشارون الضريبيون، عيادات الأطباء – التي تحتاج حلولاً سحابية آمنة.">Anwaltskanzleien, Steuerberater, Arztpraxen – die sichere Cloud-Lösungen brauchen.</p>
       </div>
       <div class="who-card">
         <div class="who-icon">🚀</div>
-        <h4>Startups & Gründer</h4>
-        <p>Von Anfang an professionell aufgestellt – skalierbar und kostengünstig.</p>
+        <h4 data-de="Startups & Gründer" data-ar="الشركات الناشئة والمؤسسون">Startups & Gründer</h4>
+        <p data-de="Von Anfang an professionell aufgestellt – skalierbar und kostengünstig." data-ar="احترافية من البداية – قابلة للتوسع وبتكلفة معقولة.">Von Anfang an professionell aufgestellt – skalierbar und kostengünstig.</p>
       </div>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="cta-section reveal">
-    <h2>Bereit loszulegen?</h2>
-    <p>Buchen Sie ein kostenloses Erstgespräch – wir schauen uns Ihre Situation an und erklären, wie wir helfen können.</p>
+    <h2 data-de="Bereit loszulegen?" data-ar="مستعد للبدء؟">Bereit loszulegen?</h2>
+    <p data-de="Buchen Sie ein kostenloses Erstgespräch – wir schauen uns Ihre Situation an und erklären, wie wir helfen können." data-ar="احجز محادثة أولية مجانية – نستعرض وضعك ونشرح كيف يمكننا المساعدة.">Buchen Sie ein kostenloses Erstgespräch – wir schauen uns Ihre Situation an und erklären, wie wir helfen können.</p>
     <div class="cta-btns">
-      <a href="termin.html" class="btn-white">Termin buchen →</a>
-      <a href="index.html#contact" class="btn-ghost">Kontakt aufnehmen</a>
+      <a href="termin.html" class="btn-white" data-de="Termin buchen →" data-ar="حجز موعد ←">Termin buchen →</a>
+      <a href="index.html#contact" class="btn-ghost" data-de="Kontakt aufnehmen" data-ar="تواصل معنا">Kontakt aufnehmen</a>
     </div>
   </div>
 
@@ -422,7 +426,8 @@
 
 <script>
   // Footer year
-  document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' Ein-Facher Cloud · Alle Rechte vorbehalten';
+  const year = new Date().getFullYear();
+  document.getElementById('footerCopy').textContent = '© ' + year + ' Ein-Facher Cloud · Alle Rechte vorbehalten';
 
   // Nav scroll
   window.addEventListener('scroll', () => {
@@ -437,6 +442,31 @@
   function closeMenu() {
     document.getElementById('mobileMenu').classList.remove('open');
     document.getElementById('hamburger').classList.remove('open');
+  }
+
+  // Language
+  let currentLang = 'de';
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('ar', lang === 'ar');
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('.lang-btn').forEach(btn =>
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang)
+    );
+
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = val;
+      else el.textContent = val;
+    });
+
+    // Update footer
+    document.getElementById('footerCopy').textContent = lang === 'ar'
+      ? '© ' + year + ' Ein-Facher Cloud · جميع الحقوق محفوظة'
+      : '© ' + year + ' Ein-Facher Cloud · Alle Rechte vorbehalten';
   }
 
   // Scroll reveal
