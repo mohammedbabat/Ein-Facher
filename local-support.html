@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Local Support – Ein-Facher Cloud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .page-hero {
+      min-height: 52vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: calc(var(--nav-h) + 60px) 24px 60px;
+      text-align: center; position: relative; overflow: hidden;
+      background: linear-gradient(160deg, #F8F5FF 0%, #FFF0E6 55%, #EDE0FF 100%);
+    }
+    .page-hero .blob { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(50px); }
+    .page-hero .blob1 { width: 420px; height: 420px; background: rgba(168,85,247,0.10); top: -80px; left: -80px; animation: blobFloat1 8s ease-in-out infinite; }
+    .page-hero .blob2 { width: 320px; height: 320px; background: rgba(249,115,22,0.08); bottom: -60px; right: -60px; animation: blobFloat2 10s ease-in-out infinite; }
+    @keyframes blobFloat1 { 0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
+    @keyframes blobFloat2 { 0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,-30px)}}
+    @keyframes heroItem { from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    .page-hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .page-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--orange-soft); border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 100px; padding: 5px 16px;
+      font-size: 0.75rem; color: var(--orange); font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;
+      opacity: 0; animation: heroItem 0.8s 0.2s var(--ease) forwards;
+    }
+    .page-hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem); font-weight: 800;
+      line-height: 1.1; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px;
+      opacity: 0; animation: heroItem 0.8s 0.4s var(--ease) forwards;
+    }
+    .page-hero h1 .grad {
+      background: linear-gradient(90deg, var(--purple), var(--orange));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-hero p {
+      font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 520px; margin: 0 auto;
+      opacity: 0; animation: heroItem 0.8s 0.6s var(--ease) forwards;
+    }
+
+    /* INTRO STRIP */
+    .intro-strip { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 24px; }
+    .intro-strip-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .intro-pill {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 100px; padding: 10px 20px;
+      font-size: 0.88rem; font-weight: 600; color: var(--text-mid);
+      transition: border-color 0.3s, color 0.3s, transform 0.3s var(--ease);
+    }
+    .intro-pill:hover { border-color: var(--orange-light); color: var(--orange); transform: translateY(-2px); }
+    .intro-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    .intro-pill .dot.purple { background: var(--purple); }
+
+    /* MAIN */
+    .local-content { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+
+    /* HOW IT WORKS */
+    .how-section { margin-bottom: 90px; }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+    .how-card {
+      background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 32px 26px; position: relative; overflow: hidden;
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
+    }
+    .how-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px var(--shadow); border-color: var(--orange-light); }
+    .how-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--purple));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease);
+    }
+    .how-card:hover::before { transform: scaleX(1); }
+    .how-num {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: #fff; display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;
+    }
+    .how-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .how-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* SERVICE DETAILS */
+    .services-detail { margin-bottom: 90px; }
+    .service-detail-card {
+      background: #fff; border: 1.5px solid var(--border); border-radius: 20px;
+      padding: 40px; margin-bottom: 20px; display: grid;
+      grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: center;
+      transition: box-shadow 0.4s var(--ease), border-color 0.4s;
+    }
+    .service-detail-card:hover { box-shadow: 0 12px 36px var(--shadow); border-color: var(--orange-light); }
+    .service-detail-card.reverse { direction: rtl; }
+    .service-detail-card.reverse > * { direction: ltr; }
+    .sd-icon-wrap {
+      background: linear-gradient(135deg, var(--orange-soft), var(--purple-soft));
+      border-radius: 20px; padding: 40px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; min-height: 180px; border: 1.5px solid var(--border);
+    }
+    .sd-tag {
+      display: inline-block; padding: 3px 10px;
+      background: var(--orange-soft); border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 6px; font-size: 0.7rem; color: var(--orange);
+      font-weight: 700; letter-spacing: 0.05em; margin-bottom: 12px;
+    }
+    .sd-tag.purple { background: var(--purple-soft); border-color: rgba(123,47,190,0.2); color: var(--purple); }
+    .sd-text h3 { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+    .sd-text p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 18px; }
+    .sd-features { display: flex; flex-direction: column; gap: 8px; }
+    .sd-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 0.87rem; color: var(--text-mid); line-height: 1.5; }
+    .sd-feature .check { color: var(--orange); font-size: 0.8rem; margin-top: 2px; flex-shrink: 0; }
+
+    /* WHO */
+    .who-section {
+      background: linear-gradient(135deg, var(--orange-soft) 0%, var(--purple-soft) 100%);
+      border-radius: 24px; padding: 56px 48px; margin-bottom: 90px; border: 1.5px solid var(--border);
+    }
+    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+    .who-card {
+      background: #fff; border-radius: var(--radius); padding: 24px 20px; border: 1.5px solid var(--border);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s;
+    }
+    .who-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px var(--shadow); }
+    .who-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .who-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .who-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      border-radius: 24px; padding: 60px 48px; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(123,47,190,0.2) 0%, transparent 60%);
+    }
+    .cta-section > * { position: relative; z-index: 1; }
+    .cta-section h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-white { padding: 13px 28px; background: #fff; border: none; border-radius: 12px; color: var(--orange); font-size: 0.95rem; font-weight: 700; font-family: inherit; cursor: pointer; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.15); transition: transform 0.3s var(--ease), box-shadow 0.3s; }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+    .btn-ghost { padding: 13px 28px; background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.4); border-radius: 12px; color: #fff; font-size: 0.95rem; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; transition: background 0.3s, transform 0.3s var(--ease); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+
+    @media(max-width: 900px) { .how-grid { grid-template-columns: 1fr 1fr; } .service-detail-card { grid-template-columns: 1fr; } .service-detail-card.reverse { direction: ltr; } .who-grid { grid-template-columns: 1fr 1fr; } .cta-section { padding: 40px 24px; } .who-section { padding: 36px 24px; } }
+    @media(max-width: 600px) { .how-grid { grid-template-columns: 1fr; } .who-grid { grid-template-columns: 1fr; } .local-content { padding: 50px 16px; } .sd-icon-wrap { min-height: 120px; font-size: 3rem; padding: 28px; } }
+  </style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box"><svg viewBox="0 0 28 28" fill="none"><text x="1" y="20" font-family="Outfit,sans-serif" font-weight="800" font-size="15" fill="white">EF</text><circle cx="23" cy="7" r="2.2" fill="#FB923C"/><circle cx="23" cy="21" r="2.2" fill="#FB923C"/><line x1="21" y1="7" x2="17" y2="7" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/><line x1="21" y1="21" x2="17" y2="21" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <div class="logo-text-wrap"><span class="logo-name">Ein-Facher</span><span class="logo-sub">— Cloud —</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-de="Home" data-ar="الرئيسية">Home</a></li>
+    <li><a href="cloud-support.html" data-de="Cloud Support" data-ar="دعم السحابة">Cloud Support</a></li>
+    <li><a href="local-support.html" class="active" data-de="Local Support" data-ar="الدعم المحلي">Local Support</a></li>
+    <li><a href="termin.html" data-de="Termin buchen" data-ar="حجز موعد">Termin buchen</a></li>
+    <li><a href="team.html" data-de="Team" data-ar="الفريق">Team</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <a href="index.html#contact" class="cta-nav" data-de="Kontakt" data-ar="تواصل معنا">Kontakt</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()" data-de="Home" data-ar="الرئيسية">Home</a>
+  <a href="cloud-support.html" onclick="closeMenu()" data-de="Cloud Support" data-ar="دعم السحابة">Cloud Support</a>
+  <a href="local-support.html" class="active" onclick="closeMenu()" data-de="Local Support" data-ar="الدعم المحلي">Local Support</a>
+  <a href="termin.html" onclick="closeMenu()" data-de="Termin buchen" data-ar="حجز موعد">Termin buchen</a>
+  <a href="team.html" onclick="closeMenu()" data-de="Team" data-ar="الفريق">Team</a>
+  <a href="index.html#contact" onclick="closeMenu()" style="color:var(--orange);font-weight:600;" data-de="Kontakt" data-ar="تواصل معنا">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="page-hero-content">
+    <div class="page-badge" data-de="🔧 Vor-Ort IT Support" data-ar="🔧 دعم تقني ميداني">🔧 Vor-Ort IT Support</div>
+    <h1><span data-de="IT Support direkt" data-ar="دعم تقني مباشر">IT Support direkt</span><br/><span class="grad" data-de="bei Ihnen vor Ort" data-ar="في موقعك">bei Ihnen vor Ort</span></h1>
+    <p data-de="Wir kommen zu Ihnen – Arbeitsplätze einrichten, Server aufbauen, Netzwerk konfigurieren. Alles aus einer Hand, persönlich und zuverlässig." data-ar="نأتي إليك – إعداد أماكن العمل، بناء الخوادم، تهيئة الشبكات. كل شيء من مصدر واحد، بشكل شخصي وموثوق.">Wir kommen zu Ihnen – Arbeitsplätze einrichten, Server aufbauen, Netzwerk konfigurieren. Alles aus einer Hand, persönlich und zuverlässig.</p>
+  </div>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-strip-inner">
+    <div class="intro-pill"><span class="dot"></span><span data-de="Arbeitsplatz" data-ar="أماكن العمل">Arbeitsplatz</span></div>
+    <div class="intro-pill"><span class="dot purple"></span><span data-de="Server & Hyper-V" data-ar="الخوادم">Server & Hyper-V</span></div>
+    <div class="intro-pill"><span class="dot"></span><span data-de="VMware" data-ar="VMware">VMware</span></div>
+    <div class="intro-pill"><span class="dot purple"></span><span data-de="Drucker & Scanner" data-ar="الطابعات">Drucker & Scanner</span></div>
+    <div class="intro-pill"><span class="dot"></span><span data-de="Router & Switch" data-ar="الشبكات">Router & Switch</span></div>
+    <div class="intro-pill"><span class="dot purple"></span><span data-de="WLAN & Firewall" data-ar="الواي فاي">WLAN & Firewall</span></div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="local-content">
+
+  <!-- WIE WIR HELFEN -->
+  <div class="how-section">
+    <p class="section-label reveal" data-de="Wie es funktioniert" data-ar="كيف يعمل">Wie es funktioniert</p>
+    <h2 class="section-title reveal" data-de="So läuft ein Vor-Ort Einsatz ab" data-ar="كيف يسير الدعم الميداني">So läuft ein Vor-Ort Einsatz ab</h2>
+    <p class="section-sub reveal" data-de="Einfach Termin buchen – wir kommen zu Ihnen und erledigen alles." data-ar="احجز موعداً ببساطة – سنأتي إليك ونتولى كل شيء.">Einfach Termin buchen – wir kommen zu Ihnen und erledigen alles.</p>
+    <div class="how-grid">
+      <div class="how-card reveal">
+        <div class="how-num">1</div>
+        <h3 data-de="Termin vereinbaren" data-ar="تحديد موعد">Termin vereinbaren</h3>
+        <p data-de="Sie buchen einen Termin online. Wir besprechen kurz was gemacht werden soll und planen den Einsatz." data-ar="تحجز موعداً عبر الإنترنت. نتباحث بإيجاز حول ما يجب فعله ونخطط للزيارة.">Sie buchen einen Termin online. Wir besprechen kurz was gemacht werden soll und planen den Einsatz.</p>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-num">2</div>
+        <h3 data-de="Wir kommen zu Ihnen" data-ar="نأتي إليك">Wir kommen zu Ihnen</h3>
+        <p data-de="Unser Techniker kommt pünktlich zu Ihnen ins Büro oder Geschäft und bringt alle nötigen Werkzeuge mit." data-ar="يأتي فني إلى مكتبك أو محلك في الوقت المحدد ومعه جميع الأدوات اللازمة.">Unser Techniker kommt pünktlich zu Ihnen ins Büro oder Geschäft und bringt alle nötigen Werkzeuge mit.</p>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-num">3</div>
+        <h3 data-de="Alles läuft – Sie arbeiten" data-ar="كل شيء يعمل – أنت تعمل">Alles läuft – Sie arbeiten</h3>
+        <p data-de="Nach dem Einsatz läuft alles reibungslos. Wir erklären was gemacht wurde und sind weiterhin erreichbar." data-ar="بعد الزيارة يسير كل شيء بسلاسة. نشرح ما تم ونبقى في متناول يدك.">Nach dem Einsatz läuft alles reibungslos. Wir erklären was gemacht wurde und sind weiterhin erreichbar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE DETAILS -->
+  <div class="services-detail">
+    <p class="section-label reveal" data-de="Unsere Leistungen" data-ar="خدماتنا">Unsere Leistungen</p>
+    <h2 class="section-title reveal" data-de="Was wir vor Ort für Sie tun" data-ar="ما نقدمه لك ميدانياً">Was wir vor Ort für Sie tun</h2>
+    <p class="section-sub reveal" data-de="Von der Einzel-Reparatur bis zum kompletten IT-Aufbau – wir sind dabei." data-ar="من الإصلاح الفردي إلى بناء البنية التحتية الكاملة – نحن هنا.">Von der Einzel-Reparatur bis zum kompletten IT-Aufbau – wir sind dabei.</p>
+
+    <!-- Arbeitsplatz -->
+    <div class="service-detail-card reveal">
+      <div class="sd-icon-wrap">🖥️</div>
+      <div class="sd-text">
+        <div class="sd-tag" data-de="Arbeitsplatz" data-ar="أماكن العمل">Arbeitsplatz</div>
+        <h3 data-de="Arbeitsplatz einrichten & aufbauen" data-ar="إعداد وتجهيز أماكن العمل">Arbeitsplatz einrichten & aufbauen</h3>
+        <p data-de="Ob neuer Mitarbeiter oder kompletter Neuaufbau – wir richten jeden Arbeitsplatz professionell ein. Windows Installation, Office Einrichtung, alle nötigen Programme – startklar in kürzester Zeit." data-ar="سواء كان موظفاً جديداً أو إعادة بناء كاملة – نجهّز كل مكان عمل باحترافية. تثبيت Windows وإعداد Office وجميع البرامج اللازمة – جاهز في أقصر وقت.">Ob neuer Mitarbeiter oder kompletter Neuaufbau – wir richten jeden Arbeitsplatz professionell ein. Windows Installation, Office Einrichtung, alle nötigen Programme – startklar in kürzester Zeit.</p>
+        <div class="sd-features">
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Windows 10/11 Installation & Konfiguration" data-ar="تثبيت وتهيئة Windows 10/11">Windows 10/11 Installation & Konfiguration</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Microsoft Office & Programme einrichten" data-ar="إعداد Microsoft Office والبرامج">Microsoft Office & Programme einrichten</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Drucker, Scanner & Peripherie anschließen" data-ar="توصيل الطابعات والماسحات والأجهزة الطرفية">Drucker, Scanner & Peripherie anschließen</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Datenmigration vom alten PC" data-ar="نقل البيانات من الحاسوب القديم">Datenmigration vom alten PC</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Server -->
+    <div class="service-detail-card reverse reveal">
+      <div class="sd-icon-wrap">🖧</div>
+      <div class="sd-text">
+        <div class="sd-tag purple" data-de="Server & Virtualisierung" data-ar="الخوادم والمحاكاة الافتراضية">Server & Virtualisierung</div>
+        <h3 data-de="Server installieren & konfigurieren" data-ar="تثبيت الخوادم وتهيئتها">Server installieren & konfigurieren</h3>
+        <p data-de="Wir installieren und konfigurieren Server für Ihr Unternehmen – ob physisch oder virtuell mit Hyper-V oder VMware. Active Directory, Dateiserver, alles was Ihr Unternehmen braucht." data-ar="نقوم بتثبيت وتهيئة الخوادم لشركتك – سواء كانت مادية أو افتراضية باستخدام Hyper-V أو VMware. Active Directory وخوادم الملفات وكل ما تحتاجه شركتك.">Wir installieren und konfigurieren Server für Ihr Unternehmen – ob physisch oder virtuell mit Hyper-V oder VMware. Active Directory, Dateiserver, alles was Ihr Unternehmen braucht.</p>
+        <div class="sd-features">
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Windows Server Installation & Einrichtung" data-ar="تثبيت وإعداد Windows Server">Windows Server Installation & Einrichtung</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Hyper-V & VMware Virtualisierung" data-ar="المحاكاة الافتراضية Hyper-V وVMware">Hyper-V & VMware Virtualisierung</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Active Directory & Benutzerverwaltung" data-ar="Active Directory وإدارة المستخدمين">Active Directory & Benutzerverwaltung</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Dateiserver & Backup-Lösungen" data-ar="خوادم الملفات وحلول النسخ الاحتياطي">Dateiserver & Backup-Lösungen</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drucker -->
+    <div class="service-detail-card reveal">
+      <div class="sd-icon-wrap">🖨️</div>
+      <div class="sd-text">
+        <div class="sd-tag" data-de="Drucker & Peripherie" data-ar="الطابعات والأجهزة الطرفية">Drucker & Peripherie</div>
+        <h3 data-de="Drucker & Geräte einrichten" data-ar="إعداد الطابعات والأجهزة">Drucker & Geräte einrichten</h3>
+        <p data-de="Netzwerkdrucker richtig einrichten ist oft komplizierter als gedacht. Wir konfigurieren Drucker, Scanner und Multifunktionsgeräte so dass alle Mitarbeiter problemlos drucken können." data-ar="إعداد طابعات الشبكة صحيحاً في الغالب أصعب مما يبدو. نهيّئ الطابعات والماسحات وأجهزة الوظائف المتعددة بحيث يستطيع جميع الموظفين الطباعة بسهولة.">Netzwerkdrucker richtig einrichten ist oft komplizierter als gedacht. Wir konfigurieren Drucker, Scanner und Multifunktionsgeräte so dass alle Mitarbeiter problemlos drucken können.</p>
+        <div class="sd-features">
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Netzwerkdrucker für alle PCs einrichten" data-ar="إعداد طابعة الشبكة لجميع الحواسيب">Netzwerkdrucker für alle PCs einrichten</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Scanner & Multifunktionsgeräte konfigurieren" data-ar="تهيئة الماسحات وأجهزة الوظائف المتعددة">Scanner & Multifunktionsgeräte konfigurieren</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Treiber installieren & aktualisieren" data-ar="تثبيت التعريفات وتحديثها">Treiber installieren & aktualisieren</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Druckprobleme diagnostizieren & beheben" data-ar="تشخيص مشاكل الطباعة وإصلاحها">Druckprobleme diagnostizieren & beheben</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Netzwerk -->
+    <div class="service-detail-card reverse reveal">
+      <div class="sd-icon-wrap">🔌</div>
+      <div class="sd-text">
+        <div class="sd-tag purple" data-de="Netzwerk & Infrastruktur" data-ar="الشبكة والبنية التحتية">Netzwerk & Infrastruktur</div>
+        <h3 data-de="Netzwerk aufbauen & absichern" data-ar="بناء الشبكة وتأمينها">Netzwerk aufbauen & absichern</h3>
+        <p data-de="Ein stabiles und sicheres Netzwerk ist die Grundlage für jedes Unternehmen. Wir konfigurieren Router, Switches und WLAN – schnell, sicher und zuverlässig." data-ar="الشبكة المستقرة والآمنة هي أساس كل شركة. نهيّئ أجهزة التوجيه والمحولات والواي فاي – بسرعة وأمان وموثوقية.">Ein stabiles und sicheres Netzwerk ist die Grundlage für jedes Unternehmen. Wir konfigurieren Router, Switches und WLAN – schnell, sicher und zuverlässig.</p>
+        <div class="sd-features">
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Router & Switch konfigurieren" data-ar="تهيئة أجهزة التوجيه والمحولات">Router & Switch konfigurieren</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="WLAN einrichten & absichern" data-ar="إعداد الواي فاي وتأمينه">WLAN einrichten & absichern</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Firewall & VPN konfigurieren" data-ar="تهيئة جدار الحماية والشبكة الخاصة الافتراضية">Firewall & VPN konfigurieren</span></div>
+          <div class="sd-feature"><span class="check">✦</span><span data-de="Netzwerkverkabelung & Strukturierung" data-ar="توصيل الشبكة وتنظيمها">Netzwerkverkabelung & Strukturierung</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FÜR WEN -->
+  <div class="who-section reveal">
+    <p class="section-label" data-de="Für wen ist das?" data-ar="لمن هذا؟">Für wen ist das?</p>
+    <h2 class="section-title" data-de="Wir kommen zu Ihnen – egal wo" data-ar="نأتي إليك – أينما كنت">Wir kommen zu Ihnen – egal wo</h2>
+    <p class="section-sub" data-de="Jedes Unternehmen das IT-Probleme hat braucht manchmal jemanden der einfach vorbeikommt." data-ar="كل شركة لديها مشاكل تقنية تحتاج أحياناً لشخص يأتي ببساطة ويحل المشكلة.">Jedes Unternehmen das IT-Probleme hat braucht manchmal jemanden der einfach vorbeikommt.</p>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">🏪</div>
+        <h4 data-de="Einzelhandel & Shops" data-ar="تجارة التجزئة والمحلات">Einzelhandel & Shops</h4>
+        <p data-de="Kassensysteme, Drucker, WLAN – wir sorgen dafür dass Ihr Laden läuft." data-ar="أنظمة الكاسا والطابعات والواي فاي – نضمن أن محلك يعمل بسلاسة.">Kassensysteme, Drucker, WLAN – wir sorgen dafür dass Ihr Laden läuft.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🏢</div>
+        <h4 data-de="Büros & Kanzleien" data-ar="المكاتب والمكاتب المهنية">Büros & Kanzleien</h4>
+        <p data-de="Arbeitsplätze, Server, sichere Netzwerke – für Büros die zuverlässige IT brauchen." data-ar="أماكن العمل والخوادم والشبكات الآمنة – للمكاتب التي تحتاج تقنية موثوقة.">Arbeitsplätze, Server, sichere Netzwerke – für Büros die zuverlässige IT brauchen.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🏭</div>
+        <h4 data-de="Handwerk & Betriebe" data-ar="الحرف والمؤسسات">Handwerk & Betriebe</h4>
+        <p data-de="Auch Handwerksbetriebe brauchen funktionierende IT – wir helfen unkompliziert." data-ar="المؤسسات الحرفية أيضاً تحتاج تقنية معلومات تعمل – نساعدك ببساطة.">Auch Handwerksbetriebe brauchen funktionierende IT – wir helfen unkompliziert.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section reveal">
+    <h2 data-de="Vor-Ort Termin buchen" data-ar="احجز موعداً ميدانياً">Vor-Ort Termin buchen</h2>
+    <p data-de="Sagen Sie uns was Sie brauchen – wir kommen vorbei und erledigen es. Kostenlose Erstberatung inklusive." data-ar="أخبرنا بما تحتاج – سنأتي ونتولى الأمر. استشارة أولية مجانية متضمنة.">Sagen Sie uns was Sie brauchen – wir kommen vorbei und erledigen es. Kostenlose Erstberatung inklusive.</p>
+    <div class="cta-btns">
+      <a href="termin.html" class="btn-white" data-de="Termin buchen →" data-ar="حجز موعد ←">Termin buchen →</a>
+      <a href="index.html#contact" class="btn-ghost" data-de="Kontakt aufnehmen" data-ar="تواصل معنا">Kontakt aufnehmen</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo-box"><svg viewBox="0 0 28 28" fill="none"><text x="1" y="20" font-family="Outfit,sans-serif" font-weight="800" font-size="15" fill="white">EF</text><circle cx="23" cy="7" r="2" fill="#FB923C"/><circle cx="23" cy="21" r="2" fill="#FB923C"/><line x1="21" y1="7" x2="17" y2="7" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/><line x1="21" y1="21" x2="17" y2="21" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <span class="footer-name">Ein-Facher <span>Cloud</span></span>
+  </div>
+  <p id="footerCopy"></p>
+  <p style="margin-top:10px;"><a href="datenschutz.html" style="color:rgba(255,255,255,0.45);font-size:0.78rem;text-decoration:underline;">Datenschutzerklärung</a></p>
+</footer>
+
+<script>
+  const year = new Date().getFullYear();
+  document.getElementById('footerCopy').textContent = '© ' + year + ' Ein-Facher Cloud · Alle Rechte vorbehalten';
+  window.addEventListener('scroll', () => { document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40); });
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburger').classList.remove('open'); }
+  let currentLang = 'de';
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('ar', lang === 'ar');
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.textContent.toLowerCase() === lang));
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      else el.textContent = val;
+    });
+    document.getElementById('footerCopy').textContent = lang === 'ar'
+      ? '© ' + year + ' Ein-Facher Cloud · جميع الحقوق محفوظة'
+      : '© ' + year + ' Ein-Facher Cloud · Alle Rechte vorbehalten';
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+<script src="cookie.js"></script>
+</body>
+</html>
