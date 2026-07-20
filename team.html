@@ -118,13 +118,16 @@
 
     @media(max-width: 800px) { .team-grid { grid-template-columns: 1fr 1fr; } .values-grid { grid-template-columns: 1fr 1fr; } }
     @media(max-width: 540px) { .team-grid { grid-template-columns: 1fr; } .values-grid { grid-template-columns: 1fr; } .team-section { padding: 50px 16px 60px; } }
-      /* NAV COMPACT FIX */
-    nav { flex-wrap: nowrap; }
-    .nav-links { gap: 0; flex-wrap: nowrap; }
-    .nav-links a { padding: 6px 10px; font-size: 0.8rem; white-space: nowrap; }
-    .logo-name { font-size: 1rem; }
-    .logo-sub { font-size: 0.52rem; }
-    .cta-nav { padding: 7px 14px; font-size: 0.8rem; }
+      
+    /* NAV FIX - 6 links */
+    .nav-links a { padding: 6px 10px !important; font-size: 0.82rem !important; white-space: nowrap !important; }
+    .nav-links { gap: 0 !important; flex-wrap: nowrap !important; }
+    nav { padding: 0 20px !important; flex-wrap: nowrap !important; }
+    .logo-name { font-size: 1rem !important; }
+    .nav-links li { opacity: 1 !important; animation: none !important; }
+    .nav-links li:nth-child(1),.nav-links li:nth-child(2),.nav-links li:nth-child(3),
+    .nav-links li:nth-child(4),.nav-links li:nth-child(5),.nav-links li:nth-child(6) { opacity: 1 !important; animation: navFadeIn 0.5s forwards !important; }
+    .nav-links li:nth-child(6) { animation-delay: 0.35s !important; }
   </style>
 </head>
 <body>
