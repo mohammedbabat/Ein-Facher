@@ -433,42 +433,39 @@
     document.getElementById('hamburger').classList.remove('open');
   }
 
-  // EmailJS
-  const EMAILJS_PUBLIC_KEY = 'WXLm-gO2Zp2r_UI6U';
-  const EMAILJS_SERVICE_ID = 'service_1maf1tj';
-  const EMAILJS_TEMPLATE_ID = 'template_2e21xzj';
-  (function() {
-    var s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-    s.onload = function() { emailjs.init(EMAILJS_PUBLIC_KEY); };
-    document.head.appendChild(s);
-  })();
-
+  // Kontaktformular – mailto
   function submitForm() {
-    const fname = document.getElementById('fname').value.trim();
-    const lname = document.getElementById('lname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const topic = document.getElementById('topic').value;
+    const fname   = document.getElementById('fname').value.trim();
+    const lname   = document.getElementById('lname').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const topic   = document.getElementById('topic').value;
     const message = document.getElementById('message').value.trim();
-    if (!fname || !email) {
-      alert(currentLang === 'ar' ? 'يرجى ملء الحقول المطلوبة.' : 'Bitte Name und E-Mail ausfüllen.');
+
+    if (!fname) {
+      alert(currentLang === 'ar' ? 'يرجى إدخال اسمك الأول.' : 'Bitte geben Sie Ihren Vornamen ein.');
       return;
     }
-    const btn = document.querySelector('.form-submit .btn-primary');
-    btn.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Wird gesendet...';
-    btn.disabled = true;
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name: fname + ' ' + lname, from_email: email,
-      phone: phone || '—', topic: topic || '—', message: message || '—'
-    }).then(() => {
+    if (!email) {
+      alert(currentLang === 'ar' ? 'يرجى إدخال بريدك الإلكتروني.' : 'Bitte geben Sie Ihre E-Mail-Adresse ein.');
+      return;
+    }
+
+    const subject = encodeURIComponent('Neue Anfrage: ' + (topic || 'Allgemein') + ' von ' + fname + ' ' + lname);
+    const body = encodeURIComponent(
+      'Name: ' + fname + ' ' + lname + '\n' +
+      'E-Mail: ' + email + '\n' +
+      'Telefon: ' + (phone || '—') + '\n' +
+      'Thema: ' + (topic || '—') + '\n\n' +
+      'Nachricht:\n' + (message || '—')
+    );
+
+    window.location.href = 'mailto:Kontakt@ein-facher.de?subject=' + subject + '&body=' + body;
+
+    setTimeout(() => {
       document.getElementById('successMsg').style.display = 'block';
-      btn.style.display = 'none';
-    }).catch(err => {
-      alert('Fehler: ' + JSON.stringify(err));
-      btn.textContent = currentLang === 'ar' ? 'إرسال الرسالة ←' : 'Nachricht senden →';
-      btn.disabled = false;
-    });
+      document.querySelector('.form-submit .btn-primary').style.display = 'none';
+    }, 500);
   }
 
   // Scroll reveal
