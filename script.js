@@ -61,7 +61,19 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// ── KONTAKTFORMULAR – mailto ──
+// ── EMAILJS SETUP ──
+const EMAILJS_PUBLIC_KEY  = '3LMf4YOmiUZJP02tl';
+const EMAILJS_SERVICE_ID  = 'service_8nvvrkm';
+const EMAILJS_TEMPLATE_ID = 'template_9ww0qd5';
+
+(function () {
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+  s.onload = function () { emailjs.init(EMAILJS_PUBLIC_KEY); };
+  document.head.appendChild(s);
+})();
+
+// ── FORM SUBMIT ──
 function submitForm() {
   const fname   = document.getElementById('fname').value.trim();
   const lname   = document.getElementById('lname').value.trim();
@@ -70,7 +82,6 @@ function submitForm() {
   const topic   = document.getElementById('topic').value;
   const message = document.getElementById('message').value.trim();
 
-  // Validierung
   if (!fname) {
     alert(currentLang === 'ar' ? 'يرجى إدخال اسمك الأول.' : 'Bitte geben Sie Ihren Vornamen ein.');
     return;
@@ -80,24 +91,24 @@ function submitForm() {
     return;
   }
 
-  // E-Mail Inhalt zusammenstellen
-  const subject = encodeURIComponent('Neue Anfrage: ' + (topic || 'Allgemein') + ' von ' + fname + ' ' + lname);
-  const body = encodeURIComponent(
-    'Name: ' + fname + ' ' + lname + '\n' +
-    'E-Mail: ' + email + '\n' +
-    'Telefon: ' + (phone || '—') + '\n' +
-    'Thema: ' + (topic || '—') + '\n\n' +
-    'Nachricht:\n' + (message || '—')
-  );
+  const btn = document.querySelector('.form-submit .btn-primary');
+  btn.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Wird gesendet...';
+  btn.disabled = true;
 
-  // Outlook / Mail App öffnen
-  window.location.href = 'mailto:Kontakt@ein-facher.de?subject=' + subject + '&body=' + body;
-
-  // Erfolgsmeldung anzeigen
-  setTimeout(() => {
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    from_name:  fname + ' ' + lname,
+    from_email: email,
+    phone:      phone || '—',
+    topic:      topic || '—',
+    message:    message || '—'
+  }).then(() => {
     document.getElementById('successMsg').style.display = 'block';
-    document.querySelector('.form-submit .btn-primary').style.display = 'none';
-  }, 500);
+    btn.style.display = 'none';
+  }).catch(err => {
+    alert('Fehler beim Senden. Bitte versuchen Sie es erneut.');
+    btn.textContent = currentLang === 'ar' ? 'إرسال الرسالة ←' : 'Nachricht senden →';
+    btn.disabled = false;
+  });
 }
 
 // ── SCROLL REVEAL ──
