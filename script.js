@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
 // ── DYNAMIC COPYRIGHT YEAR ──
 const footerCopy = document.getElementById('footerCopy');
 const year = new Date().getFullYear();
-footerCopy.textContent = `© ${year} Ein-Facher Cloud · Alle Rechte vorbehalten`;
+footerCopy.textContent = `© ${year} Ein-Facher · Alle Rechte vorbehalten`;
 
 // ── NAV SCROLL ──
 window.addEventListener('scroll', () => {
@@ -40,8 +40,8 @@ function setLang(lang) {
   const copy = document.getElementById('footerCopy');
   if (copy) {
     copy.textContent = lang === 'ar'
-      ? `© ${year} Ein-Facher Cloud · جميع الحقوق محفوظة`
-      : `© ${year} Ein-Facher Cloud · Alle Rechte vorbehalten`;
+      ? `© ${year} Ein-Facher · جميع الحقوق محفوظة`
+      : `© ${year} Ein-Facher · Alle Rechte vorbehalten`;
   }
 }
 

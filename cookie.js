@@ -1,4 +1,4 @@
-// Cookie Banner – Ein-Facher Cloud
+// Cookie Banner – Ein-Facher
 (function () {
   // Don't show on datenschutz page
   if (window.location.pathname.includes('datenschutz')) return;

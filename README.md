@@ -1,4 +1,4 @@
-# Ein-Facher Cloud – IT Support & Microsoft 365
+# Ein-Facher – IT Support & Microsoft 365
 
 Eine professionelle IT-Unternehmenswebseite für Cloud-Support und Microsoft 365 Dienstleistungen.
 
