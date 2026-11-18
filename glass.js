@@ -7,7 +7,7 @@
  cards.forEach(c=>{c.classList.add('glass-card');
   c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
    c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');
-   if(matchMedia('(hover:hover)').matches)c.style.transform='perspective(900px) rotateY('+((x/r.width-.5)*6)+'deg) rotateX('+(-(y/r.height-.5)*6)+'deg) translateY(-4px)';});
+   if(!c.matches('.booking-box,.cta-box')&&matchMedia('(hover:hover)').matches)c.style.transform='perspective(900px) rotateY('+((x/r.width-.5)*6)+'deg) rotateX('+(-(y/r.height-.5)*6)+'deg) translateY(-4px)';});
   c.addEventListener('mouseleave',()=>{c.style.transform='';});});
  const rev=document.querySelectorAll('.reveal');
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}}),{threshold:.12});

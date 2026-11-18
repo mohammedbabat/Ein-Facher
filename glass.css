@@ -12,9 +12,6 @@ nav,nav.scrolled{background:rgba(255,255,255,.55)!important;-webkit-backdrop-fil
  box-shadow:0 8px 32px rgba(123,47,190,.12),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.2)!important;
  border-radius:22px!important;position:relative;overflow:hidden;
  transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;}
-.glass-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;
- background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.75),transparent 60%);}
-.glass-card:hover::after{opacity:1;}
 .glass-card:hover{box-shadow:0 18px 50px rgba(123,47,190,.2),inset 0 1px 0 #fff!important;}
 .stats-bar,.why-us{background:rgba(255,255,255,.25)!important;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
 /* Apple-Einblendung: Scale + Blur + Fade */
@@ -24,3 +21,8 @@ nav,nav.scrolled{background:rgba(255,255,255,.55)!important;-webkit-backdrop-fil
 @media(max-width:700px){.glass-orb{filter:blur(50px);opacity:.35}}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none}.glass-orb{display:none}}
 @supports not (backdrop-filter:blur(1px)){.glass-card{background:rgba(255,255,255,.9)!important}}
+
+/* Lichtschimmer als Hintergrund (liegt HINTER dem Inhalt, Text bleibt scharf) */
+.glass-card:hover{background-image:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.55),transparent 65%),linear-gradient(135deg,rgba(255,255,255,.62),rgba(255,255,255,.28))!important;}
+.glass-card.no-tilt{transform:none!important}
+.booking-box a,.booking-box button,.cta-box a,.cta-box button{position:relative;z-index:2;}
