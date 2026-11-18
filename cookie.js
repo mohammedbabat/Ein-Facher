@@ -13,7 +13,7 @@
     <div class="cookie-inner">
       <div class="cookie-text">
         <span class="cookie-icon">🍪</span>
-        <span id="cookie-msg">Diese Webseite verwendet externe Dienste (Google Fonts, EmailJS, Calendly). Mit der Nutzung stimmen Sie unserer <a href="datenschutz.html">Datenschutzerklärung</a> zu.</span>
+        <span id="cookie-msg">Diese Webseite verwendet externe Dienste (Google Fonts, EmailJS, Microsoft Bookings). Mit der Nutzung stimmen Sie unserer <a href="datenschutz.html">Datenschutzerklärung</a> zu.</span>
       </div>
       <div class="cookie-btns">
         <button class="cookie-accept" onclick="acceptCookies()">Akzeptieren</button>
@@ -71,7 +71,7 @@
   // Arabic support
   const lang = document.documentElement.lang;
   if (lang === 'ar') {
-    document.getElementById('cookie-msg').textContent = 'يستخدم هذا الموقع خدمات خارجية (Google Fonts وEmailJS وCalendly). باستخدامك للموقع، فإنك توافق على سياسة الخصوصية.';
+    document.getElementById('cookie-msg').textContent = 'يستخدم هذا الموقع خدمات خارجية (Google Fonts وEmailJS وMicrosoft Bookings). باستخدامك للموقع، فإنك توافق على سياسة الخصوصية.';
     banner.querySelector('.cookie-accept').textContent = 'قبول';
   }
 
@@ -91,7 +91,7 @@
           msg.appendChild(link);
           acceptBtn.textContent = 'قبول';
         } else {
-          msg.innerHTML = 'Diese Webseite verwendet externe Dienste (Google Fonts, EmailJS, Calendly). Mit der Nutzung stimmen Sie unserer <a href="datenschutz.html" style="color:#FB923C;text-decoration:underline;">Datenschutzerklärung</a> zu.';
+          msg.innerHTML = 'Diese Webseite verwendet externe Dienste (Google Fonts, EmailJS, Microsoft Bookings). Mit der Nutzung stimmen Sie unserer <a href="datenschutz.html" style="color:#FB923C;text-decoration:underline;">Datenschutzerklärung</a> zu.';
           acceptBtn.textContent = 'Akzeptieren';
         }
       }

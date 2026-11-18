@@ -3,7 +3,7 @@
 Eine professionelle IT-Unternehmenswebseite für Cloud-Support und Microsoft 365 Dienstleistungen.
 
 ## 🌐 Live-Webseite
-[ein-facher.cloud](https://ein-facher.cloud)
+[ein-facher.de](https://ein-facher.de)
 
 ## 📁 Projektstruktur
 
@@ -45,4 +45,4 @@ cd Ein-Facher
 
 ## 📬 Kontakt
 
-Bei Fragen oder Interesse an unseren Leistungen: [ein-facher.cloud](https://ein-facher.cloud)
+Bei Fragen oder Interesse an unseren Leistungen: [ein-facher.de](https://ein-facher.de)

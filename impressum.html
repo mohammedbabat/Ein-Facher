@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Impressum – Ein-Facher Cloud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .datenschutz-hero {
+      padding: calc(var(--nav-h) + 60px) 24px 50px;
+      text-align: center;
+      background: linear-gradient(160deg, #F8F5FF 0%, #FFF0E6 60%, #EDE0FF 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .blob { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(40px); }
+    .blob1 { width: 400px; height: 400px; background: rgba(168,85,247,0.1); top: -80px; left: -80px; animation: blobFloat1 8s ease-in-out infinite; }
+    .blob2 { width: 300px; height: 300px; background: rgba(249,115,22,0.08); bottom: -60px; right: -60px; animation: blobFloat2 10s ease-in-out infinite; }
+    @keyframes blobFloat1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px,15px); } }
+    @keyframes blobFloat2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-15px,-20px); } }
+
+    .datenschutz-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800;
+      color: var(--text); position: relative; z-index: 1;
+      opacity: 0; animation: heroItem 0.8s 0.3s var(--ease) forwards;
+    }
+    .datenschutz-hero p {
+      color: var(--text-mid); margin-top: 12px; font-size: 1rem;
+      position: relative; z-index: 1;
+      opacity: 0; animation: heroItem 0.8s 0.5s var(--ease) forwards;
+    }
+    @keyframes heroItem { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+
+    .datenschutz-content {
+      max-width: 800px; margin: 0 auto; padding: 60px 24px 80px;
+    }
+    .ds-section {
+      background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 32px; margin-bottom: 20px;
+      transition: box-shadow 0.3s;
+    }
+    .ds-section:hover { box-shadow: 0 8px 24px var(--shadow); }
+    .ds-section h2 {
+      font-size: 1.1rem; font-weight: 700; color: var(--text);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .ds-section h2 .icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--purple-soft); display: flex; align-items: center;
+      justify-content: center; font-size: 1rem; flex-shrink: 0;
+    }
+    .ds-section p { color: var(--text-mid); font-size: 0.92rem; line-height: 1.75; margin-bottom: 10px; }
+    .ds-section p:last-child { margin-bottom: 0; }
+    .ds-section a { color: var(--purple); text-decoration: underline; }
+    .ds-section ul { margin: 10px 0 10px 20px; color: var(--text-mid); font-size: 0.92rem; line-height: 1.75; }
+    .ds-tag {
+      display: inline-block; padding: 2px 8px;
+      background: var(--orange-soft); border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 6px; font-size: 0.7rem; color: var(--orange);
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .ds-tag.purple {
+      background: var(--purple-soft); border-color: rgba(123,47,190,0.2);
+      color: var(--purple);
+    }
+    .last-updated {
+      text-align: center; color: var(--text-muted); font-size: 0.82rem;
+      margin-bottom: 40px;
+    }
+  </style>
+<link rel="stylesheet" href="glass.css"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box"><svg viewBox="0 0 28 28" fill="none"><text x="1" y="20" font-family="Outfit,sans-serif" font-weight="800" font-size="15" fill="white">EF</text><circle cx="23" cy="7" r="2.2" fill="#FB923C"/><circle cx="23" cy="21" r="2.2" fill="#FB923C"/><line x1="21" y1="7" x2="17" y2="7" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/><line x1="21" y1="21" x2="17" y2="21" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <div class="logo-text-wrap"><span class="logo-name">Ein-Facher</span><span class="logo-sub">— Cloud —</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="cloud-support.html">Cloud Support</a></li>
+    <li><a href="local-support.html">Local Support</a></li>
+    <li><a href="termin.html">Termin buchen</a></li>
+    <li><a href="automatisierung.html">Automatisierung</a></li>
+    <li><a href="team.html">Team</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <a href="index.html#contact" class="cta-nav">Kontakt</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="cloud-support.html" onclick="closeMenu()">Cloud Support</a>
+  <a href="local-support.html" onclick="closeMenu()">Local Support</a>
+  <a href="termin.html" onclick="closeMenu()">Termin buchen</a>
+  <a href="automatisierung.html" onclick="closeMenu()">Automatisierung</a>
+  <a href="team.html" onclick="closeMenu()">Team</a>
+  <a href="index.html#contact" onclick="closeMenu()" style="color:var(--orange);font-weight:600;">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<div class="datenschutz-hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <h1>📄 Impressum</h1>
+  <p>Angaben gemäß § 5 DDG</p>
+</div>
+
+<!-- CONTENT -->
+<div class="datenschutz-content">
+  <div class="ds-section reveal">
+    <h2><span class="icon">🏢</span> Anbieter</h2>
+    <p><strong>Ein-Facher Cloud</strong><br/>
+    Inhaber: Mohammed Babat<br/>
+    [Straße und Hausnummer – bitte ergänzen]<br/>
+    [PLZ Ort – bitte ergänzen]<br/>
+    Deutschland</p>
+  </div>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">📞</span> Kontakt</h2>
+    <p>E-Mail: <a href="mailto:Kontakt@ein-facher.de">Kontakt@ein-facher.de</a><br/>
+    Webseite: <a href="https://ein-facher.de">ein-facher.de</a></p>
+  </div>
+
+  <div class="ds-section reveal">
+    <h2><span class="icon">⚖️</span> Streitschlichtung</h2>
+    <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo-box"><svg viewBox="0 0 28 28" fill="none"><text x="1" y="20" font-family="Outfit,sans-serif" font-weight="800" font-size="15" fill="white">EF</text><circle cx="23" cy="7" r="2" fill="#FB923C"/><circle cx="23" cy="21" r="2" fill="#FB923C"/><line x1="21" y1="7" x2="17" y2="7" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/><line x1="21" y1="21" x2="17" y2="21" stroke="#FB923C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <span class="footer-name">Ein-Facher <span>Cloud</span></span>
+  </div>
+  <p id="footerCopy" data-de="© 2026 Ein-Facher Cloud · Alle Rechte vorbehalten" data-ar="© 2026 Ein-Facher Cloud · جميع الحقوق محفوظة">© 2026 Ein-Facher Cloud · Alle Rechte vorbehalten</p>
+  <p style="margin-top:10px;"><a href="datenschutz.html" data-de="Datenschutzerklärung" data-ar="سياسة الخصوصية" style="color:rgba(255,255,255,0.5);font-size:0.78rem;text-decoration:underline;">Datenschutzerklärung</a></p>
+  <p style="margin-top:8px;"><a href="impressum.html" data-de="Impressum" data-ar="البيانات القانونية" style="color:rgba(255,255,255,0.5);font-size:0.78rem;text-decoration:underline;">Impressum</a></p>
+</footer>
+
+<script>
+  document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' Ein-Facher Cloud · Alle Rechte vorbehalten';
+  window.addEventListener('scroll', () => { document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40); });
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburger').classList.remove('open'); }
+  let currentLang = 'de';
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('ar', lang === 'ar');
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.textContent.toLowerCase() === lang));
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+<script src="glass.js" defer></script>
+</body>
+</html>
