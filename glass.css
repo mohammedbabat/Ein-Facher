@@ -26,3 +26,4 @@ nav,nav.scrolled{background:rgba(255,255,255,.55)!important;-webkit-backdrop-fil
 .glass-card:hover{background-image:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.55),transparent 65%),linear-gradient(135deg,rgba(255,255,255,.62),rgba(255,255,255,.28))!important;}
 .glass-card.no-tilt{transform:none!important}
 .booking-box a,.booking-box button,.cta-box a,.cta-box button{position:relative;z-index:2;}
+.logo-box svg,.footer-logo-box svg{direction:ltr;unicode-bidi:isolate}

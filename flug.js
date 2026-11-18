@@ -1,47 +1,17 @@
-<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vorschau 3 – Kamerafahrt</title><meta name="robots" content="noindex">
-<link rel="icon" href="../favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',sans-serif;color:#fff;background:#0f0620}
-.journey{height:1100vh;position:relative}
-.stage{position:sticky;top:0;height:100vh;overflow:hidden;perspective:700px;perspective-origin:50% 50%}
-.bgc{position:absolute;inset:0;transition:background 1.2s}
-.world{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;will-change:transform}
-.o{position:absolute;transform-style:preserve-3d;will-change:opacity;pointer-events:none}
-.o svg{display:block;width:100%;height:100%;overflow:visible}
-.cab{height:4px;border-radius:3px;background:linear-gradient(90deg,transparent,var(--c),transparent);box-shadow:0 0 14px var(--c)}
-.num{font-weight:800;color:#fff;text-shadow:0 0 30px rgba(255,255,255,.6);line-height:1}
-.mo{width:420px;padding:30px;text-align:center;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);pointer-events:auto}
-.mo .av{width:110px;height:110px;border-radius:50%;margin:0 auto 14px;background:linear-gradient(135deg,#A855F7,#F97316);display:flex;align-items:center;justify-content:center;font-size:2.8rem;font-weight:800}
-.mo h3{font-size:1.9rem}.mo p{opacity:.85;margin-top:6px}
-.hud{position:fixed;left:50%;bottom:7vh;transform:translateX(-50%);z-index:5;text-align:center;width:min(560px,90vw);pointer-events:none}
-.hud .box{padding:18px 24px;border-radius:22px;background:rgba(15,6,32,.45);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:opacity .5s,transform .5s}
-.hud h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800}.hud p{opacity:.85;margin-top:4px}
-.hud a{pointer-events:auto;display:inline-block;margin-top:10px;padding:9px 22px;border-radius:30px;background:linear-gradient(135deg,#F97316,#FB923C);color:#fff;text-decoration:none;font-weight:700;font-size:.9rem}
-.welcome{position:fixed;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;transition:opacity .4s}
-.welcome h1{font-size:clamp(2.6rem,9vw,6rem);font-weight:800;line-height:1.05}
-.g{background:linear-gradient(135deg,#C084FC,#FB923C);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.welcome p{opacity:.75;margin-top:12px}
-.tag{position:fixed;top:14px;left:14px;z-index:9;font-size:.8rem;background:rgba(255,255,255,.14);padding:6px 14px;border-radius:20px}
-.dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:9;display:flex;flex-direction:column;gap:10px}
-.dots b{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);transition:.3s}.dots b.on{background:#FB923C;transform:scale(1.6)}
-</style></head><body>
-<div class="tag">Vorschau 3 · Kamerafahrt</div>
-<div class="dots" id="dots"></div>
-<div class="welcome" id="wel"><h1>Willkommen bei<br><span class="g">Ein-Facher</span></h1><p>Scrollen – wir nehmen Sie mit.</p></div>
-<div class="hud"><div class="box" id="hud"><h2 id="ht"></h2><p id="hp"></p><a id="ha" href="#"></a></div></div>
-<section class="journey" id="j"><div class="stage" id="st"><div class="bgc" id="bg"></div><div class="world" id="w"></div></div></section>
-<script>
+
+const T={
+ de:{wel:['Willkommen bei','Scrollen – wir nehmen Sie mit.'],more:' ansehen →',end:['Und das ist Mohammed','Ihr persönlicher Ansprechpartner.','Termin buchen →'],mo:['Mohammed Babat','Ihr Ansprechpartner bei Ein-Facher','MB'],skip:'Überspringen ↓'},
+ ar:{wel:['مرحباً بكم في','مرّر للأسفل – سنأخذكم في جولة.'],more:' ← اعرف المزيد',end:['وهذا هو محمد','شريككم الشخصي للتواصل.','حجز موعد ←'],mo:['محمد بابات','مسؤول التواصل لديكم في Ein-Facher','MB'],skip:'تخطي ↓'}};
 const Z=[
- {n:'Cloud Support',d:'Microsoft 365, SharePoint, Entra ID, Intune und Exchange.',l:'cloud-support.html',bg:'radial-gradient(ellipse at 50% 40%,#6b3fd0,#25104f 75%)'},
- {n:'Local Support',d:'PCs, Server, Netzwerk und Active Directory – vor Ort.',l:'local-support.html',bg:'radial-gradient(ellipse at 50% 40%,#3a1a6e,#0d0620 75%)'},
- {n:'Automatisierung',d:'Power Automate und Power Apps nehmen Routine ab.',l:'automatisierung.html',bg:'radial-gradient(ellipse at 50% 40%,#7a3a10,#1d0b2e 75%)'},
- {n:'Termin buchen',d:'Wählen Sie Tag und Uhrzeit – wir sind da.',l:'termin.html',bg:'radial-gradient(ellipse at 50% 40%,#2a5fc0,#14103a 75%)'},
- {n:'Team',d:'Persönlich, direkt, auf Deutsch und Arabisch.',l:'team.html',bg:'radial-gradient(ellipse at 50% 40%,#9a3fa8,#1a0b2e 75%)'}];
+ {n:{de:'Cloud Support',ar:'دعم السحابة'},d:{de:'Microsoft 365, SharePoint, Entra ID, Intune und Exchange.',ar:'مايكروسوفت 365 وشيربوينت وإنترا وإنتيون وإكستشينج.'},l:'cloud-support.html',bg:'radial-gradient(ellipse at 50% 40%,#6b3fd0,#25104f 75%)'},
+ {n:{de:'Local Support',ar:'الدعم المحلي'},d:{de:'PCs, Server, Netzwerk und Active Directory – vor Ort.',ar:'أجهزة وخوادم وشبكات وActive Directory في موقعكم.'},l:'local-support.html',bg:'radial-gradient(ellipse at 50% 40%,#3a1a6e,#0d0620 75%)'},
+ {n:{de:'Automatisierung',ar:'الأتمتة'},d:{de:'Power Automate und Power Apps nehmen Routine ab.',ar:'Power Automate وPower Apps تُنهيان العمل الروتيني.'},l:'automatisierung.html',bg:'radial-gradient(ellipse at 50% 40%,#7a3a10,#1d0b2e 75%)'},
+ {n:{de:'Termin buchen',ar:'حجز موعد'},d:{de:'Wählen Sie Tag und Uhrzeit – wir sind da.',ar:'اختاروا اليوم والوقت – نحن بانتظاركم.'},l:'termin.html',bg:'radial-gradient(ellipse at 50% 40%,#2a5fc0,#14103a 75%)'},
+ {n:{de:'Team',ar:'الفريق'},d:{de:'Persönlich, direkt, auf Deutsch und Arabisch.',ar:'شخصي ومباشر، بالألمانية والعربية.'},l:'team.html',bg:'radial-gradient(ellipse at 50% 40%,#9a3fa8,#1a0b2e 75%)'}];
+const L=()=>(typeof currentLang!=='undefined'&&currentLang==='ar')?'ar':'de';
+const MOB=innerWidth<700,KS=Math.min(1,Math.max(.62,innerWidth/1000));
 const GAP=2800,START=1400; // Abstand der Zonen
-const world=document.getElementById('w'),objs=[];
+const world=document.getElementById('fw'),objs=[];
 let seed=7;const R=()=>(seed=(seed*16807)%2147483647)/2147483647;
 const S={
  cloud:c=>`<svg viewBox="0 0 120 80"><path d="M30 68a22 22 0 0 1 2-44 28 28 0 0 1 54-4 24 24 0 0 1 8 48z" fill="${c}" opacity=".92"/></svg>`,
@@ -51,7 +21,7 @@ const S={
  gear:c=>`<svg viewBox="0 0 100 100"><g fill="${c}"><circle cx="50" cy="50" r="30"/>${[0,45,90,135].map(a=>`<rect x="42" y="4" width="16" height="92" rx="5" transform="rotate(${a} 50 50)"/>`).join('')}</g><circle cx="50" cy="50" r="13" fill="#1d0b2e"/></svg>`,
  per:c=>`<svg viewBox="0 0 80 100"><circle cx="40" cy="28" r="20" fill="${c}"/><path d="M6 98c0-26 14-40 34-40s34 14 34 40z" fill="${c}"/></svg>`
 };
-function add(el,x,y,z,w,h,extra){const d=document.createElement('div');d.className='o';d.style.width=w+'px';d.style.height=h+'px';d.style.marginLeft=-w/2+'px';d.style.marginTop=-h/2+'px';
+function add(el,x,y,z,w,h,extra){w*=KS;h*=KS;const d=document.createElement('div');d.className='o';d.style.width=w+'px';d.style.height=h+'px';d.style.marginLeft=-w/2+'px';d.style.marginTop=-h/2+'px';
  d.dataset.x=x;d.dataset.y=y;d.dataset.z=z;if(extra)d.dataset.r=extra;d.innerHTML=el;world.appendChild(d);objs.push(d);return d;}
 function scatter(zi,n,fn){const z0=-START-zi*GAP;for(let i=0;i<n;i++){const side=R()<.5?-1:1,x=side*(200+R()*650),y=(R()-.5)*620,z=z0-GAP/2+R()*GAP;fn(x,y,z,i);}}
 
@@ -93,9 +63,9 @@ const cols=['#C084FC','#FB923C','#A78BFA','#FDBA74','#E9D5FF'];
 scatter(4,16,(x,y,z)=>{const s=90+R()*90;add(S.per(cols[Math.floor(R()*5)]),x*.9,y,z,s,s*1.25);});
 // Mohammed am Ende
 const ZEND=-START-4*GAP-GAP/2-300;
-add(`<div class="mo"><div class="av">MB</div><h3>Mohammed Babat</h3><p>Ihr Ansprechpartner bei Ein-Facher</p></div>`,0,-10,ZEND,420,300).style.pointerEvents='auto';
+add(`<div class="mo"><div class="av">MB</div><h3 id="moN">Mohammed Babat</h3><p id="moP">Ihr Ansprechpartner bei Ein-Facher</p></div>`,0,-10,ZEND,420,300);
 const END=-ZEND-330; // Kamera-Ende
-const j=document.getElementById('j'),bg=document.getElementById('bg'),hud=document.getElementById('hud'),ht=document.getElementById('ht'),hp=document.getElementById('hp'),ha=document.getElementById('ha'),wel=document.getElementById('wel'),dots=document.getElementById('dots');
+const j=document.getElementById('fj'),bg=document.getElementById('fbg'),hud=document.getElementById('fhud'),ht=document.getElementById('fht'),hp=document.getElementById('fhp'),ha=document.getElementById('fha'),wel=document.getElementById('fwel'),dots=document.getElementById('fdots');
 Z.forEach(()=>dots.appendChild(document.createElement('b')));
 let mx=0,my=0,cz=0,zone=-1,tk=false;
 addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;rq();});
@@ -110,10 +80,15 @@ function u(){tk=false;const r=j.getBoundingClientRect(),tot=r.height-innerHeight
    o.style.transform='translate3d('+x+'px,'+y+'px,'+z+'px)'+(o.dataset.cab?' rotateY(90deg)':'')+sp;}});
  wel.style.opacity=Math.max(0,1-p*30);
  const zi=Math.min(Z.length-1,Math.max(-1,Math.floor((cz-START+GAP/2)/GAP)));
- const cur=p<.02?-1:zi; if(cur!==zone){zone=cur;if(zone>=0){const q=Z[zone];ht.textContent=q.n;hp.textContent=q.d;ha.href='../'+q.l;ha.textContent=q.n+' ansehen →';bg.style.background=q.bg;hud.style.opacity=1}else{hud.style.opacity=0;bg.style.background='radial-gradient(ellipse at 50% 50%,#2a1050,#0f0620 75%)'}
+ const cur=p<.02?-1:zi; if(cur!==zone){zone=cur;if(zone>=0){const q=Z[zone];ht.textContent=q.n[L()];hp.textContent=q.d[L()];ha.href=q.l;ha.textContent=q.n[L()]+T[L()].more;bg.style.background=q.bg;hud.style.opacity=1}else{hud.style.opacity=0;bg.style.background='radial-gradient(ellipse at 50% 50%,#2a1050,#0f0620 75%)'}
   [...dots.children].forEach((b,i)=>b.classList.toggle('on',i===zone));}
- if(p>.985){ht.textContent='Und das ist Mohammed';hp.textContent='Ihr persönlicher Ansprechpartner.';ha.href='../termin.html';ha.textContent='Termin buchen →';}
+ if(p>.985){const e=T[L()].end;ht.textContent=e[0];hp.textContent=e[1];ha.href='termin.html';ha.textContent=e[2];}
 }
 bg.style.background='radial-gradient(ellipse at 50% 50%,#2a1050,#0f0620 75%)';hud.style.opacity=0;
 addEventListener('scroll',rq,{passive:true});addEventListener('resize',rq);u();
-</script></body></html>
+
+function applyLang(){const t=T[L()];const w=document.getElementById('fwel');w.querySelector('.w1').textContent=t.wel[0];w.querySelector('p').textContent=t.wel[1];
+ const n=document.getElementById('moN'),p=document.getElementById('moP');if(n){n.textContent=t.mo[0];p.textContent=t.mo[1];}
+ document.getElementById('fskip').textContent=t.skip;zone=-2;rq();}
+if(typeof window.setLang==='function'){const o=window.setLang;window.setLang=function(l){o(l);applyLang();};}
+applyLang();
