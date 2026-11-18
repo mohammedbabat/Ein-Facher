@@ -1,10 +1,9 @@
 /* Glas-Design (Apple-Stil) – gemeinsam für alle Seiten */
 body{background:linear-gradient(160deg,#F4EEFF 0%,#FFF3E8 55%,#F4EEFF 100%) fixed!important;}
-.glass-orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.45;pointer-events:none;z-index:0;will-change:transform;}
+.glass-orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.45;pointer-events:none;z-index:-1;will-change:transform;}
 .glass-orb.o1{width:420px;height:420px;background:#A855F7;top:-80px;left:-100px;}
 .glass-orb.o2{width:360px;height:360px;background:#FB923C;top:35%;right:-120px;}
 .glass-orb.o3{width:300px;height:300px;background:#7B2FBE;bottom:-80px;left:30%;opacity:.3;}
-body>*:not(.glass-orb):not(script){position:relative;z-index:1;}
 nav,nav.scrolled{background:rgba(255,255,255,.55)!important;-webkit-backdrop-filter:saturate(180%) blur(22px)!important;backdrop-filter:saturate(180%) blur(22px)!important;border-bottom:1px solid rgba(255,255,255,.6)!important;}
 .service-card,.who-card,.how-card,.example-card,.service-detail-card,.what-card,.value-card,.team-card,.stat-card2,.process-step,.cta-box,.booking-box,.contact-form,.auto-item,.auto-flow-step,.info-item,.modal-box{
  background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(255,255,255,.28))!important;
