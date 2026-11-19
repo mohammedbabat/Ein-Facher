@@ -1,5 +1,5 @@
 
-.flight{height:1100vh;position:relative}
+.flight{height:1000vh;position:relative}
 .fstage{position:sticky;top:0;height:100vh;overflow:hidden;perspective:700px;perspective-origin:50% 50%}
 .fbgc{position:absolute;inset:0;transition:background 1.2s}
 .fworld{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;will-change:transform}

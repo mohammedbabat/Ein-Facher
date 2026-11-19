@@ -10,7 +10,7 @@ const Z=[
  {n:{de:'Team',ar:'الفريق'},d:{de:'Persönlich, direkt, auf Deutsch und Arabisch.',ar:'شخصي ومباشر، بالألمانية والعربية.'},l:'team.html',bg:'radial-gradient(ellipse at 50% 40%,#9a3fa8,#1a0b2e 75%)'}];
 const L=()=>(typeof currentLang!=='undefined'&&currentLang==='ar')?'ar':'de';
 const MOB=innerWidth<700,KS=Math.min(1,Math.max(.62,innerWidth/1000));
-const GAP=2800,START=1400; // Abstand der Zonen
+const GAP=2800,START=3700; // Abstand der Zonen
 const world=document.getElementById('fw'),objs=[];
 let seed=7;const R=()=>(seed=(seed*16807)%2147483647)/2147483647;
 const S={
@@ -44,7 +44,7 @@ const bd=k=>B(COL[k],G[k],NAMES[k]);
 S.rack=()=>`<svg viewBox="0 0 100 170"><rect x="6" y="4" width="88" height="162" rx="8" fill="#140a2c" stroke="#C084FC" stroke-width="4"/>${[0,1,2,3,4,5,6].map(i=>`<rect x="14" y="${12+i*21}" width="72" height="16" rx="3" fill="#2a1260" stroke="#7B2FBE" stroke-width="2"/><circle cx="24" cy="${20+i*21}" r="3" fill="${i%3?'#4ade80':'#FB923C'}"/><rect x="50" y="${17+i*21}" width="28" height="6" rx="2" fill="#7B2FBE"/>`).join('')}</svg>`;
 
 // Zone 0 Cloud
-scatter(0,26,(x,y,z,i)=>{const s=150+R()*230;add(S.cloud(i%3?'#fff':'#E9D5FF'),x,y,z,s,s*.66);});
+scatter(0,16,(x,y,z,i)=>{const s=130+R()*170;add(S.cloud(i%3?'#EDE4FF':'#D9C2FF'),x,y,z,s,s*.66);});
 for(let i=0;i<14;i++){const k=['entra','exch','sp','pa','pf','bi'][i%6];const side=i%2?1:-1;add(bd(k),side*(170+R()*430),(R()-.5)*520,-START-GAP/2+ (i/14)*GAP*1.0 - 200,120,135);}
 // Zone 1 Local
 scatter(1,10,(x,y,z)=>add(S.pc(),x,y,z,130+R()*60,110+R()*50));
